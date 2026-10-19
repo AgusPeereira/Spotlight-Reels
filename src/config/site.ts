@@ -29,8 +29,7 @@ export type Example = {
 // URL pública de la web. Cambiala cuando la publiques en Vercel
 // (o cuando tengas dominio propio). Se usa para la imagen al compartir
 // y para la página de regreso de PayPal.
-// TODO: reemplazar por la URL real después de publicar.
-const siteUrl = 'https://spotlightreels.vercel.app';
+const siteUrl = 'https://spotlight-reels.vercel.app';
 
 export const site = {
   name: 'Spotlight Reels',
