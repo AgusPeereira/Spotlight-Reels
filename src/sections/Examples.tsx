@@ -17,9 +17,9 @@ export default function Examples() {
         </Reveal>
         <ul className={styles.grid}>
           {site.examples.map((ex, i) => (
-            <Reveal as="li" key={`${ex.youtubeId}-${i}`} delay={i * 80}>
+            <li key={`${ex.youtubeId}-${i}`}>
               <VideoCard example={ex} />
-            </Reveal>
+            </li>
           ))}
         </ul>
       </div>

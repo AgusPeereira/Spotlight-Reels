@@ -26,7 +26,7 @@ export default function HowItWorks() {
 
         <ol className={styles.steps}>
           {steps.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={i * 90} className={styles.step}>
+            <li key={s.title} className={styles.step}>
               <div className={styles.marker} aria-hidden="true">
                 <span className={styles.num}>{i + 1}</span>
                 <Ring width={58} />
@@ -36,7 +36,7 @@ export default function HowItWorks() {
                 {s.title}
               </h3>
               {s.text && <p className="muted">{s.text}</p>}
-            </Reveal>
+            </li>
           ))}
         </ol>
 

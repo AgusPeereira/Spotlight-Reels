@@ -25,11 +25,9 @@ export default function Packages() {
           className={styles.grid}
           style={{ '--cols': Math.min(site.packs.length, 3) } as CSSProperties}
         >
-          {site.packs.map((pack, i) => (
-            <Reveal
-              as="li"
+          {site.packs.map((pack) => (
+            <li
               key={pack.id}
-              delay={i * 80}
               className={`${styles.card} ${pack.featured ? styles.featured : ''}`}
             >
               {pack.badge && <p className={styles.badge}>{pack.badge}</p>}
@@ -58,7 +56,7 @@ export default function Packages() {
               >
                 Order {pack.name}
               </Link>
-            </Reveal>
+            </li>
           ))}
         </ul>
 

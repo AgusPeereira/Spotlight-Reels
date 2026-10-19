@@ -30,7 +30,7 @@ export default function TwoVideos() {
             </p>
           </Reveal>
 
-          <Reveal as="article" className={styles.card} delay={120}>
+          <Reveal as="article" className={styles.card}>
             <div className={`${styles.frame} ${styles.portrait}`} aria-hidden="true">
               <span className={styles.frameBeam} />
               <Ring width={70} className={styles.frameRing} />

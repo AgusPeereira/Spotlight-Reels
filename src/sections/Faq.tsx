@@ -30,7 +30,7 @@ export default function Faq() {
           </h2>
         </Reveal>
 
-        <Reveal className={styles.list} delay={100}>
+        <Reveal className={styles.list}>
           {faqs.map((f) => (
             <details key={f.q} className={styles.item}>
               <summary className={styles.question}>

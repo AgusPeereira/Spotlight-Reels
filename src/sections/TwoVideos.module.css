@@ -99,3 +99,34 @@
     aspect-ratio: auto;
   }
 }
+
+/* Animación: cuando la tarjeta entra en pantalla, cae la luz y el anillo se dibuja
+   alrededor del jugador. Muestra lo que hacemos: "te marcamos en cada clip".
+   Pasa una sola vez. */
+.frameBeam {
+  opacity: 0;
+  transition: opacity 600ms ease 150ms;
+}
+.frameRing ellipse {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms var(--ease-in-out) 450ms;
+}
+:global(.reveal[data-visible='true']) .frameBeam {
+  opacity: 1;
+}
+:global(.reveal[data-visible='true']) .frameRing ellipse {
+  stroke-dashoffset: 0;
+}
+
+/* Con "reducir movimiento": todo visible desde el principio, sin dibujar */
+@media (prefers-reduced-motion: reduce) {
+  .frameBeam {
+    opacity: 1;
+    transition: none;
+  }
+  .frameRing ellipse {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}

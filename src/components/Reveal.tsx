@@ -33,7 +33,8 @@ export default function Reveal({ children, as: Tag = 'div', delay = 0, className
           observer.disconnect(); // solo una vez
         }
       },
-      { rootMargin: '0px 0px -10% 0px' },
+      // Se activa un poco antes de que entre en pantalla, así nunca se ve un hueco vacío
+      { rootMargin: '0px 0px 10% 0px' },
     );
     observer.observe(el);
     return () => observer.disconnect();

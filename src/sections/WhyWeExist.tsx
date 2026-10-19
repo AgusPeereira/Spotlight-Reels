@@ -21,7 +21,7 @@ export default function WhyWeExist() {
           </h2>
         </Reveal>
 
-        <Reveal className={styles.body} delay={120}>
+        <Reveal className={styles.body}>
           <p>
             College coaches get more highlight videos than they can watch, and they decide in
             seconds. Good players get passed over every season, not because they aren’t good

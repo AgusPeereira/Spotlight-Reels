@@ -59,8 +59,8 @@ export default function WhatYouGet() {
           <span>You get</span>
         </div>
         <ul className={styles.rows}>
-          {rows.map((r, i) => (
-            <Reveal as="li" key={r.get} delay={i * 50} className={styles.row}>
+          {rows.map((r) => (
+            <li key={r.get} className={styles.row}>
               <p className={styles.deliver}>
                 <span className="sr-only">We deliver: </span>
                 {r.deliver}
@@ -72,7 +72,7 @@ export default function WhatYouGet() {
                 <span className="sr-only">You get: </span>
                 <strong>{r.get}</strong> {r.why}
               </p>
-            </Reveal>
+            </li>
           ))}
         </ul>
       </div>

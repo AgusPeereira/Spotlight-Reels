@@ -35,7 +35,7 @@ export default function Founder() {
           )}
         </Reveal>
 
-        <Reveal className={styles.story} delay={100}>
+        <Reveal className={styles.story}>
           <h2 id="founder-title" className={`h2 ${styles.title}`}>
             Who’s behind <em>Spotlight Reels.</em>
           </h2>
