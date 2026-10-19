@@ -1,0 +1,101 @@
+.head {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--graphite);
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+}
+
+/* Marco que representa el formato de cada video (gráfico de marca, no foto) */
+.frame {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 1px solid var(--graphite);
+  border-radius: 10px;
+  background: radial-gradient(120% 90% at 50% 100%, #141a16 0%, var(--ink) 70%);
+}
+.landscape {
+  aspect-ratio: 16 / 9;
+}
+.portrait {
+  aspect-ratio: 9 / 16;
+  width: min(100%, 170px);
+  margin-inline: auto;
+}
+
+.frameBeam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 70%;
+  height: 78%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgb(57 255 106 / 0.28), rgb(57 255 106 / 0.04));
+  clip-path: polygon(37.5% 0, 62.5% 0, 100% 100%, 0 100%);
+}
+.portrait .frameBeam {
+  height: 70%;
+  width: 90%;
+}
+
+.frameRing {
+  position: absolute;
+  left: 50%;
+  top: 78%;
+  transform: translate(-50%, -50%);
+}
+.portrait .frameRing {
+  top: 70%;
+}
+
+.tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: rgb(11 13 12 / 0.75);
+  border: 1px solid var(--graphite);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bench);
+}
+
+.name {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.for {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: 1.65fr 1fr;
+    align-items: stretch;
+  }
+  .portrait {
+    width: auto;
+    height: 340px;
+  }
+  /* Los dos marcos con la misma altura para que las tarjetas se alineen */
+  .landscape {
+    height: 340px;
+    aspect-ratio: auto;
+  }
+}

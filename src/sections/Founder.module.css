@@ -1,0 +1,89 @@
+.section {
+  background: var(--ink-raised);
+  border-block: 1px solid var(--graphite);
+}
+
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.media {
+  max-width: 420px;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid var(--graphite);
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--graphite);
+  border-radius: calc(var(--radius) + 4px);
+  background: radial-gradient(90% 70% at 50% 75%, #13201a 0%, var(--ink-raised) 70%);
+}
+.placeholder img {
+  width: 62%;
+  height: auto;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.text {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 38rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--bench);
+}
+
+/* Frases destacadas: el propósito y el sacrificio */
+.highlight {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--neon);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+
+.signature {
+  margin-top: 2.25rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--chalk);
+}
+
+@media (max-width: 899px) {
+  .media {
+    width: 70%;
+    max-width: 300px;
+  }
+  /* Sin foto, en el celular el isotipo de relleno no aporta: se oculta */
+  .media:has(.placeholder) {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .media {
+    position: sticky;
+    top: calc(var(--header-h) + 3rem);
+  }
+}

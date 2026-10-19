@@ -1,0 +1,39 @@
+.fab {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 48px;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  background: var(--neon);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.45),
+    0 0 0 1px rgb(11 13 12 / 0.3);
+  transition: transform 140ms var(--ease-out);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.fab:active {
+  transform: scale(0.96);
+}
+
+/* En la computadora no hace falta: el contacto está en el encabezado y el pie */
+@media (min-width: 920px) {
+  .fab {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab:active {
+    transform: none;
+  }
+}

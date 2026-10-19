@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import { site, type Example } from '../config/site';
+import Reveal from '../components/Reveal';
+import styles from './Examples.module.css';
+
+// 8. Videos de ejemplo. Si la lista de site.ts está vacía, no se muestra nada.
+export default function Examples() {
+  if (site.examples.length === 0) return null;
+
+  return (
+    <section id="examples" className="section" aria-labelledby="examples-title">
+      <div className="container">
+        <Reveal className={styles.head}>
+          <h2 id="examples-title" className="h2">
+            See it <em>in action.</em>
+          </h2>
+        </Reveal>
+        <ul className={styles.grid}>
+          {site.examples.map((ex, i) => (
+            <Reveal as="li" key={`${ex.youtubeId}-${i}`} delay={i * 80}>
+              <VideoCard example={ex} />
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+// Acepta el ID solo o el link completo (youtu.be/..., watch?v=..., /shorts/..., /embed/...)
+function toYoutubeId(value: string) {
+  const match = value.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([\w-]{11})/);
+  return match ? match[1] : value.trim();
+}
+
+// Muestra la miniatura y carga el reproductor de YouTube recién al tocar.
+// Así la página carga más rápido y YouTube no pone cookies hasta que se usa.
+function VideoCard({ example }: { example: Example }) {
+  const [playing, setPlaying] = useState(false);
+  const { title, position } = example;
+  const youtubeId = toYoutubeId(example.youtubeId);
+
+  return (
+    <article className={styles.card}>
+      <div className={styles.player}>
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
+            title={`${title} – highlight video`}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+          />
+        ) : (
+          <button type="button" className={styles.poster} onClick={() => setPlaying(true)}>
+            <img
+              src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+              alt=""
+              loading="lazy"
+              width={480}
+              height={360}
+            />
+            <span className={styles.play} aria-hidden="true" />
+            <span className="sr-only">Play video: {title}</span>
+          </button>
+        )}
+      </div>
+      <h3 className={styles.title}>{title}</h3>
+      <p className="muted">{position}</p>
+    </article>
+  );
+}

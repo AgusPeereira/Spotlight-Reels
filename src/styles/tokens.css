@@ -1,0 +1,37 @@
+/* Tokens de la marca: colores, tipografías, espacios y curvas.
+   Si cambiás un color acá, cambia en toda la web. */
+:root {
+  /* Colores (manual de marca) */
+  --ink: #0b0d0c; /* Negro Estadio: fondo principal */
+  --neon: #39ff6a; /* Verde Spotlight: acento sobre fondo oscuro */
+  --chalk: #f2f4f1; /* Blanco Tiza: texto sobre oscuro */
+  --grass: #0e9f45; /* Verde Césped: acento sobre fondo claro (solo títulos grandes) */
+  --graphite: #2a2f2c; /* Grafito: bordes, tarjetas */
+  --bench: #9aa19c; /* Gris Banco: texto secundario */
+
+  /* Derivados (mismos colores con transparencia) */
+  --ink-raised: #121513; /* tarjetas apenas más claras que el fondo */
+  --neon-soft: rgb(57 255 106 / 0.12);
+  --neon-line: rgb(57 255 106 / 0.35);
+
+  /* Tipografías */
+  --font-display: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --tracking-display: 0.02em;
+
+  /* Tamaños de títulos (se adaptan al ancho de pantalla) */
+  --size-hero: clamp(3.4rem, 9.5vw, 7.5rem);
+  --size-h2: clamp(2.6rem, 6.4vw, 4.75rem);
+  --size-h3: clamp(1.6rem, 3vw, 2rem);
+
+  /* Espacios */
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(5rem, 12vw, 9rem);
+  --max-w: 1180px;
+  --radius: 14px;
+  --header-h: 68px;
+
+  /* Curvas de animación */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}

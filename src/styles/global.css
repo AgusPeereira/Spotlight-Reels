@@ -1,0 +1,266 @@
+/* Estilos globales: base, botones, títulos y utilidades compartidas */
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; /* sin destello gris al tocar en el celular */
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* La palabra clave de un título va en verde neón: <h2>Texto <em>clave</em></h2> */
+h1 em,
+h2 em,
+h3 em {
+  font-style: normal;
+  color: var(--neon);
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Foco visible para navegación con teclado */
+:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--neon);
+  color: var(--ink);
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  font-size: 16px; /* evita el zoom automático del iPhone */
+}
+
+/* Controles: respuesta inmediata al toque, sin seleccionar el texto */
+button,
+a,
+summary,
+label {
+  touch-action: manipulation;
+}
+button,
+.btn,
+summary {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---------- Layout ---------- */
+
+/* El encabezado es fijo: dejamos su alto libre arriba */
+main {
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+  outline: none;
+}
+
+/* Link "Skip to content" para teclado: aparece solo al recibir foco */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--neon);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  scroll-margin-top: var(--header-h);
+}
+
+.h2 {
+  font-size: var(--size-h2);
+}
+
+.lead {
+  font-size: clamp(1.125rem, 2vw, 1.3rem);
+  color: var(--bench);
+  max-width: 38rem;
+}
+
+.muted {
+  color: var(--bench);
+}
+
+/* Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Botones ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 52px;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--neon);
+  color: var(--ink);
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--graphite);
+  color: var(--chalk);
+}
+.btn-lg {
+  min-height: 60px;
+  padding-inline: 2rem;
+  font-size: 1.0625rem;
+}
+.btn-block {
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: #6bff8f;
+  }
+  .btn-secondary:hover {
+    border-color: var(--chalk);
+  }
+}
+
+/* Link de texto con flecha */
+.text-link {
+  color: var(--neon);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* ---------- Aparición suave al hacer scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    transition: opacity 300ms ease;
+  }
+  .btn:active {
+    transform: none;
+  }
+}

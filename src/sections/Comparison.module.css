@@ -1,0 +1,189 @@
+.head {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(3rem, 8vw, 5rem);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.head > *:not(.beam) {
+  position: relative;
+}
+.head :global(.lead) {
+  margin-top: 1.25rem;
+}
+
+.beam {
+  width: min(460px, 100%);
+}
+
+/* ----- Tabla (computadora) ----- */
+
+.tableWrap {
+  display: none;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 1rem;
+}
+.table th,
+.table td {
+  padding: 1.15rem 1.25rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--graphite);
+}
+.table thead th {
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--bench);
+  vertical-align: bottom;
+}
+.table tbody th {
+  font-weight: 600;
+  color: var(--chalk);
+  width: 18%;
+}
+.table tbody td {
+  color: var(--bench);
+}
+
+/* Columna destacada: la nuestra */
+.table .ours {
+  background: var(--neon-soft);
+  border-left: 1.5px solid var(--neon-line);
+  border-right: 1.5px solid var(--neon-line);
+  color: var(--chalk);
+  font-weight: 600;
+}
+.table thead .ours {
+  border-top: 1.5px solid var(--neon-line);
+  border-radius: 12px 12px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--neon);
+}
+.table tbody tr:last-child .ours {
+  border-bottom: 1.5px solid var(--neon-line);
+  border-radius: 0 0 12px 12px;
+}
+
+/* ----- Tarjetas (celular) ----- */
+
+.cards {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Desplegable "Compare with other options" (solo celular) */
+.others summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 56px;
+  padding: 0 1.25rem;
+  border: 1px solid var(--graphite);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.others summary::-webkit-details-marker {
+  display: none;
+}
+.others summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--neon);
+  transition: transform 200ms var(--ease-out);
+}
+.others[open] summary::after {
+  transform: rotate(45deg);
+}
+.others ul {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border: 1px solid var(--graphite);
+  border-radius: var(--radius);
+}
+.cardOurs {
+  border-color: var(--neon-line);
+  background: var(--neon-soft);
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+.cardOurs .cardTitle {
+  color: var(--neon);
+}
+
+.cardList {
+  display: grid;
+  margin: 0;
+}
+.cardList div {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--graphite);
+}
+.cardList dt {
+  color: var(--bench);
+  font-size: 0.9375rem;
+}
+.cardList dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ----- Cierre ----- */
+
+.closing {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.promise {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.promise em {
+  font-style: normal;
+  color: var(--neon);
+}
+
+@media (min-width: 900px) {
+  .tableWrap {
+    display: block;
+  }
+  .cards {
+    display: none;
+  }
+}

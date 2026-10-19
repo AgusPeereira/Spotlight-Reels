@@ -1,0 +1,87 @@
+.page {
+  max-width: 42rem; /* líneas de menos de ~80 caracteres */
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: var(--section-y);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.4rem 0;
+  color: var(--bench);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+}
+
+.updated {
+  margin-top: 0.75rem;
+  color: var(--bench);
+  font-size: 0.9375rem;
+}
+
+.notice {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--graphite);
+  border-left: 3px solid var(--neon);
+  border-radius: 8px;
+  background: var(--ink-raised);
+  font-size: 0.9375rem;
+  color: var(--bench);
+}
+.notice a {
+  color: var(--chalk);
+  overflow-wrap: anywhere;
+}
+
+/* Texto de las políticas */
+.content {
+  margin-top: 2.5rem;
+  color: #c9cec9;
+  line-height: 1.7;
+}
+.content h2 {
+  margin: 2.75rem 0 0.9rem;
+  font-size: 2rem;
+  color: var(--chalk);
+}
+.content p + p {
+  margin-top: 1rem;
+}
+.content ul {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.content li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--neon);
+}
+.content a {
+  color: var(--neon);
+  overflow-wrap: anywhere;
+}
+.content strong {
+  color: var(--chalk);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--chalk);
+  }
+}

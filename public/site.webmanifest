@@ -1,0 +1,13 @@
+{
+  "name": "Spotlight Reels",
+  "short_name": "Spotlight Reels",
+  "description": "Soccer recruiting highlight videos, ready in 48 hours.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0D0C",
+  "theme_color": "#0B0D0C",
+  "icons": [
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,208 @@
+.page {
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: var(--section-y);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  padding: 0.4rem 0;
+  color: var(--bench);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  overflow-wrap: anywhere;
+}
+
+.outcome {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.summary {
+  margin: 2rem 0 2.5rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--graphite);
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+}
+
+.priceRow,
+.deliveryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.priceRow > span,
+.deliveryRow > span {
+  color: var(--bench);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--neon);
+}
+.price span {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--bench);
+}
+
+.subhead {
+  margin: 1.5rem 0 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bench);
+}
+
+.includes {
+  display: grid;
+  gap: 0.55rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--graphite);
+}
+.includes li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+.includes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 13px;
+  height: 7px;
+  border: 2px solid var(--neon);
+  border-radius: 50%;
+}
+
+.fine {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--bench);
+}
+
+.steps {
+  display: grid;
+  gap: 1.25rem;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.stepMarker {
+  display: grid;
+  justify-items: center;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+/* ----- Caja de pago ----- */
+
+.side {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.payBox {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1.5px solid var(--neon-line);
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(to bottom, rgb(57 255 106 / 0.08), rgb(57 255 106 / 0) 60%), var(--ink-raised);
+}
+
+.agree {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.agree input {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0.1rem 0 0;
+  accent-color: var(--neon);
+  cursor: pointer;
+}
+
+.error {
+  margin-top: -0.5rem;
+  color: #ff8a7a;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.secure {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--bench);
+  text-align: center;
+}
+.secure :global(.lock) {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 0.35rem;
+  color: var(--neon);
+}
+
+.already {
+  justify-self: center;
+  padding: 0.6rem 0.25rem;
+  color: var(--chalk);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-align: center;
+  text-underline-offset: 0.25em;
+}
+
+@media (min-width: 920px) {
+  .layout {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .side {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    margin-top: 3.5rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--chalk);
+  }
+  .already:hover {
+    color: var(--neon);
+  }
+}

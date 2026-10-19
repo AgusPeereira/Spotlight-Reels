@@ -1,0 +1,198 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: rgb(11 13 12 / 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgb(42 47 44 / 0.7);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: var(--header-h);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-right: auto;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.brand img {
+  width: 34px;
+  height: 34px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  padding-top: 0.12em; /* Bebas Neue se ve un poco alta: la centramos a ojo */
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.wordmark em {
+  font-style: normal;
+  color: var(--neon);
+}
+
+/* ----- Celular: menú desplegable ----- */
+
+.nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  border-bottom: 1px solid var(--graphite);
+  padding: 0.5rem var(--gutter) 1.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out),
+    visibility 0s linear 200ms;
+}
+.header[data-open='true'] .nav {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out),
+    visibility 0s;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: block;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--graphite);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.menuCta {
+  padding-top: 1.25rem;
+}
+
+.cta {
+  display: none;
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-right: -10px;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  color: var(--chalk);
+  cursor: pointer;
+}
+
+/* Ícono de hamburguesa que se convierte en X */
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 200ms var(--ease-out), opacity 150ms ease;
+}
+.burger {
+  position: relative;
+}
+.burger::before,
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.burger::before {
+  transform: translateY(-7px);
+}
+.burger::after {
+  transform: translateY(7px);
+}
+.header[data-open='true'] .burger {
+  background: transparent;
+}
+.header[data-open='true'] .burger::before {
+  transform: rotate(45deg);
+}
+.header[data-open='true'] .burger::after {
+  transform: rotate(-45deg);
+}
+
+/* ----- Computadora: menú en línea ----- */
+
+@media (min-width: 920px) {
+  .nav {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    transition: none;
+  }
+  .links {
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+  .link {
+    padding: 0.5rem 0.85rem;
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--bench);
+    transition: color 150ms ease;
+  }
+  .menuCta,
+  .toggle {
+    display: none;
+  }
+  .cta {
+    display: inline-flex;
+    min-height: 44px;
+    padding: 0.6rem 1.3rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--chalk);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .header[data-open='true'] .nav {
+    transform: none;
+  }
+}

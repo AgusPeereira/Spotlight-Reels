@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: center;
+  padding-block: clamp(2.5rem, 7vw, 5rem) clamp(4rem, 9vw, 6rem);
+}
+
+/* Cancha: trazo tiza muy tenue, se desvanece hacia arriba */
+.pitch {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 34%;
+  fill: none;
+  stroke: rgb(242 244 241 / 0.09);
+  stroke-width: 2;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
+  mask-image: linear-gradient(to bottom, transparent, #000 45%);
+  pointer-events: none;
+}
+.spot {
+  fill: rgb(242 244 241 / 0.18);
+  stroke: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  width: clamp(190px, 30vw, 300px);
+  height: auto;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  animation: rise 900ms var(--ease-out) 350ms both;
+}
+
+.title {
+  font-size: var(--size-hero);
+  max-width: 11ch;
+  animation: rise 900ms var(--ease-out) 450ms both;
+}
+
+.subtitle {
+  margin-top: 1.5rem;
+  max-width: 34rem;
+  font-size: clamp(1.125rem, 2.2vw, 1.35rem);
+  color: var(--bench);
+  animation: rise 900ms var(--ease-out) 550ms both;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 22rem;
+  margin-top: 2.25rem;
+  animation: rise 900ms var(--ease-out) 650ms both;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.25rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--bench);
+  animation: rise 900ms var(--ease-out) 750ms both;
+}
+.facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.facts li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon);
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Entrada del contenido del hero al cargar */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .title,
+  .subtitle,
+  .actions,
+  .facts {
+    animation: none;
+  }
+}

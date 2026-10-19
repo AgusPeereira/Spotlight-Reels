@@ -1,0 +1,98 @@
+/* Sección clara: fondo Blanco Tiza, texto oscuro.
+   Regla de marca: el verde neón nunca va sobre blanco; acá se usa Verde Césped. */
+.section {
+  background: var(--chalk);
+  color: var(--ink);
+}
+.section h2 em {
+  color: var(--grass);
+}
+.section :focus-visible {
+  outline-color: var(--ink);
+}
+
+
+.head {
+  max-width: 44rem;
+  margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.intro {
+  margin-top: 1.25rem;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  color: #3d4440;
+}
+
+.labels {
+  display: none;
+}
+
+.rows {
+  border-top: 1.5px solid var(--ink);
+}
+
+.row {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid #cfd4cf;
+}
+
+.deliver {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #59615b;
+}
+
+.arrow {
+  display: none;
+}
+
+.get {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #3d4440;
+}
+.get strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.75rem;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink);
+  margin-right: 0.35rem;
+}
+
+@media (min-width: 820px) {
+  .labels {
+    display: grid;
+    grid-template-columns: 1fr 3rem 1.6fr;
+    padding-bottom: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #59615b;
+  }
+  .labels span:last-child {
+    grid-column: 3;
+  }
+  .row {
+    grid-template-columns: 1fr 3rem 1.6fr;
+    align-items: baseline;
+    padding: 1.6rem 0;
+  }
+  .deliver {
+    font-size: 1.0625rem;
+  }
+  .arrow {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--grass);
+  }
+  .get strong {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,47 @@
+/* Mismo trapecio que el logo: arriba angosto, abajo ancho */
+.beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(520px, 92vw);
+  height: min(100%, 560px);
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgb(57 255 106 / 0.13), rgb(57 255 106 / 0) 92%);
+  clip-path: polygon(37.5% 0, 62.5% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero {
+  width: min(900px, 140vw);
+  height: 100%;
+  background: linear-gradient(to bottom, rgb(57 255 106 / 0.2), rgb(57 255 106 / 0) 88%);
+  transform-origin: top center;
+  animation: beam-on 1400ms var(--ease-out) 200ms both;
+}
+
+/* El haz "se enciende": aparece desde arriba al cargar */
+@keyframes beam-on {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: beam-fade 400ms ease both;
+  }
+  @keyframes beam-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
