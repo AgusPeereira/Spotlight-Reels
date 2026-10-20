@@ -24,6 +24,9 @@ export type Example = {
   youtubeId: string; // el link del video de YouTube, o solo su ID (lo que va después de "youtu.be/")
   title: string; // ej. "Martina R. · Class of 2027"
   position: string; // ej. "Center back"
+  // 'hype' = video vertical (Shorts/Reels): se muestra en formato de celular.
+  // 'recruiting' = video horizontal para entrenadores.
+  cut: 'recruiting' | 'hype';
 };
 
 // URL pública de la web. Cambiala cuando la publiques en Vercel
@@ -110,8 +113,22 @@ export const site = {
   // Videos de ejemplo (YouTube "no listados", con permiso del jugador).
   // Mientras la lista esté vacía, la sección "See it in action" no se muestra.
   // Ejemplo:
-  // { youtubeId: 'dQw4w9WgXcQ', title: 'Martina R. · Class of 2027', position: 'Center back' },
-  examples: [] as Example[],
+  // { youtubeId: 'https://youtu.be/XXXXXXXXXXX', title: 'Martina R. · Class of 2027', position: 'Center back', cut: 'recruiting' },
+  // Para un Hype Cut vertical (Shorts) usá cut: 'hype'.
+  examples: [
+    {
+      youtubeId: 'https://youtu.be/A24YnONPRVo',
+      title: 'Luciano Lombardo · Class of 2027',
+      position: 'Goalkeeper · Doral Soccer ECNL',
+      cut: 'recruiting',
+    },
+    {
+      youtubeId: 'https://youtube.com/shorts/YaqiuH-nLes',
+      title: 'Luciano Lombardo · Class of 2027',
+      position: 'Goalkeeper · Doral Soccer ECNL',
+      cut: 'hype',
+    },
+  ] as Example[],
 
   founder: {
     name: 'Guillermo',

@@ -56,12 +56,14 @@ export function applyFixture(site: SiteConfig) {
         youtubeId: 'dQw4w9WgXcQ',
         title: 'Valentina Hernández-Castellanos · Class of 2027',
         position: 'Center back / Defensive midfielder',
+        cut: 'recruiting',
       },
-      { youtubeId: 'xxxxxxxxxxx', title: 'Jo · 2028', position: 'GK' }, // id inválido: sin miniatura
+      { youtubeId: 'xxxxxxxxxxx', title: 'Jo · 2028', position: 'GK', cut: 'hype' }, // id inválido: sin miniatura
       {
         youtubeId: 'https://youtu.be/jNQXAC9IVRw?si=Ab12Cd34', // link completo pegado
         title: 'Nguyễn Thị Phương Anh · Class of 2026 · ECNL Southwest',
         position: 'Winger',
+        cut: 'recruiting',
       },
     ];
   }
@@ -75,6 +77,8 @@ export function applyFixture(site: SiteConfig) {
   if (name === 'one') {
     // Un solo paquete y un solo video de ejemplo
     site.packs = [site.packs[1]];
-    site.examples = [{ youtubeId: 'dQw4w9WgXcQ', title: 'Mía · Class of 2027', position: 'Forward' }];
+    site.examples = [
+      { youtubeId: 'dQw4w9WgXcQ', title: 'Mía · Class of 2027', position: 'Forward', cut: 'recruiting' },
+    ];
   }
 }

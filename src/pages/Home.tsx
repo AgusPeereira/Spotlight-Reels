@@ -12,7 +12,7 @@ import Faq from '../sections/Faq';
 import FinalCta from '../sections/FinalCta';
 
 // Home: el recorrido de un padre que no nos conoce, sin repetir ideas.
-// Por qué existimos → qué te llevás → por qué nosotros → cómo funciona → precios → quién está detrás.
+// Por qué existimos → qué te llevás (y videos reales) → por qué nosotros → cómo funciona → precios → quién está detrás.
 export default function Home() {
   useSeo(
     'Spotlight Reels | Soccer Recruiting Highlight Videos',
@@ -24,9 +24,9 @@ export default function Home() {
       <Hero />
       <WhyWeExist />
       <TwoVideos />
+      <Examples />
       <WhatYouGet />
       <Comparison />
-      <Examples />
       <HowItWorks />
       <Packages />
       <Founder />

@@ -2,9 +2,23 @@
   margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 
+/* Videos horizontales anchos y verticales (Hype Cut) angostos, uno al lado del otro */
 .grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 2rem 1.5rem;
+}
+.horizontal {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+.vertical {
+  flex: 0 1 260px;
+  min-width: 0;
+}
+.vertical .player {
+  aspect-ratio: 9 / 16;
 }
 
 .card {
@@ -82,13 +96,29 @@
   overflow-wrap: anywhere;
 }
 
-@media (min-width: 700px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Etiqueta del tipo de video sobre la miniatura */
+.tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: rgb(11 13 12 / 0.8);
+  border: 1px solid var(--graphite);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk);
 }
-@media (min-width: 1040px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+
+/* En el celular, el vertical queda centrado y no ocupa toda la pantalla */
+@media (max-width: 699px) {
+  .vertical {
+    flex-basis: 100%;
+  }
+  .vertical .card {
+    width: min(100%, 260px);
+    margin-inline: auto;
   }
 }
